@@ -283,7 +283,7 @@ class BasketControllerTest {
         Assertions.assertEquals(HttpStatus.EXPECTATION_FAILED, putResponse.getStatusCode());
         BasketErrorResponse basketErrorResponse = putResponse.getBody();
         Assertions.assertEquals(
-            String.format("Product ID %s has only pieces %s left in stock.",
+            String.format("Product ID %s has only %s piece(s) left in stock.",
                 existingProductId, currentAmountInStock),
             basketErrorResponse.getMessage());
     }

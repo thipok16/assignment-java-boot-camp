@@ -187,7 +187,7 @@ class BasketServiceTest {
             OutOfStockException.class,
             () -> basketService.addOrUpdateBasket(addBasketForm));
         Assertions.assertEquals(
-            String.format("Product ID %s has only pieces %s left in stock.", existingProductId, currentAmountInStock),
+            String.format("Product ID %s has only %s piece(s) left in stock.", existingProductId, currentAmountInStock),
             exception.getMessage());
     }
 
