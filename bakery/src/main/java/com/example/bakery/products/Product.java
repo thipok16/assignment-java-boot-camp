@@ -1,12 +1,16 @@
 package com.example.bakery.products;
 
+import com.example.bakery.baskets.Basket;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -14,6 +18,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
+    @Setter
     private int id;
 
     @Getter
@@ -39,4 +44,10 @@ public class Product {
     @Getter
     @Setter
     private double ratingAverage;
+
+    @OneToMany(mappedBy = "product")
+    @Getter
+    @Setter
+    @JsonIgnore
+    private List<Basket> baskets;
 }

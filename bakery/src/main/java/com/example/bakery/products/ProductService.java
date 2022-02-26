@@ -31,7 +31,6 @@ public class ProductService {
     }
 
     public List<Product> searchByKeyword(String keyword) {
-        log.debug("keyword is {}", keyword);
         List<Product> products = productRepository.findByNameContaining(keyword);
         if (products.isEmpty()) {
             throw new ProductNotFoundException(keyword);
