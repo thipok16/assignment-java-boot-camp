@@ -1,5 +1,7 @@
 package com.example.bakery;
 
+import com.example.bakery.baskets.Basket;
+import com.example.bakery.baskets.BasketRepository;
 import com.example.bakery.products.Product;
 import com.example.bakery.products.ProductRepository;
 import com.example.bakery.users.User;
@@ -21,6 +23,9 @@ public class BakeryApplication {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BasketRepository basketRepository;
+
     @PostConstruct
     public void loadInitProducts() {
         Product mushroomPuff = new Product();
@@ -28,6 +33,7 @@ public class BakeryApplication {
         mushroomPuff.setName("mushroom puff");
         mushroomPuff.setSeller("thai airways");
         mushroomPuff.setAmountInStock(30);
+        mushroomPuff.setPriceOriginal(100);
         productRepository.save(mushroomPuff);
 
         Product chickenPanini = new Product();
@@ -35,6 +41,7 @@ public class BakeryApplication {
         chickenPanini.setName("chicken panini");
         chickenPanini.setSeller("holey");
         chickenPanini.setAmountInStock(5);
+        chickenPanini.setPriceOriginal(100);
         productRepository.save(chickenPanini);
 
         Product beefPanini = new Product();
@@ -42,6 +49,7 @@ public class BakeryApplication {
         beefPanini.setName("fattie pattie panini");
         beefPanini.setSeller("holey");
         beefPanini.setAmountInStock(7);
+        beefPanini.setPriceOriginal(100);
         productRepository.save(beefPanini);
 
         Product cheesecake = new Product();
@@ -49,6 +57,7 @@ public class BakeryApplication {
         cheesecake.setName("blueberry cheesecake");
         cheesecake.setSeller("cheesecake factory");
         cheesecake.setAmountInStock(5);
+        cheesecake.setPriceOriginal(100);
         productRepository.save(cheesecake);
 
         Product jam = new Product();
@@ -56,6 +65,7 @@ public class BakeryApplication {
         jam.setName("strawberry jam");
         jam.setSeller("pine street");
         jam.setAmountInStock(13);
+        jam.setPriceOriginal(100);
         productRepository.save(jam);
 
         Product muffin = new Product();
@@ -63,6 +73,7 @@ public class BakeryApplication {
         muffin.setName("english muffin");
         muffin.setSeller("pine street");
         muffin.setAmountInStock(8);
+        muffin.setPriceOriginal(100);
         productRepository.save(muffin);
 
         Product scone = new Product();
@@ -70,6 +81,7 @@ public class BakeryApplication {
         scone.setName("cranberry scone");
         scone.setSeller("pine street");
         scone.setAmountInStock(9);
+        scone.setPriceOriginal(100);
         productRepository.save(scone);
     }
 
@@ -98,6 +110,19 @@ public class BakeryApplication {
         hermione.setName("Hermione Granger");
         hermione.setAddress("A dentist clinic");
         userRepository.save(hermione);
+    }
+
+    @PostConstruct
+    public void loadInitBaskets() {
+        User hermione = userRepository.getById(3);
+        Product muffin = productRepository.getById(6);
+
+        Basket basket = new Basket();
+        basket.setUser(hermione);
+        basket.setProduct(muffin);
+        basket.setAmount(4);
+        basket.setStatus(Basket.Status.BOUGHT);
+        basketRepository.save(basket);
     }
 
     public static void main(String[] args) {
