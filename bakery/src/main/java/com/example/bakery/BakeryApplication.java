@@ -43,6 +43,34 @@ public class BakeryApplication {
         beefPanini.setSeller("holey");
         beefPanini.setAmountInStock(7);
         productRepository.save(beefPanini);
+
+        Product cheesecake = new Product();
+        cheesecake.setId(4);
+        cheesecake.setName("blueberry cheesecake");
+        cheesecake.setSeller("cheesecake factory");
+        cheesecake.setAmountInStock(5);
+        productRepository.save(cheesecake);
+
+        Product jam = new Product();
+        jam.setId(5);
+        jam.setName("strawberry jam");
+        jam.setSeller("pine street");
+        jam.setAmountInStock(13);
+        productRepository.save(jam);
+
+        Product muffin = new Product();
+        muffin.setId(6);
+        muffin.setName("english muffin");
+        muffin.setSeller("pine street");
+        muffin.setAmountInStock(8);
+        productRepository.save(muffin);
+
+        Product scone = new Product();
+        scone.setId(7);
+        scone.setName("cranberry scone");
+        scone.setSeller("pine street");
+        scone.setAmountInStock(9);
+        productRepository.save(scone);
     }
 
     @PostConstruct

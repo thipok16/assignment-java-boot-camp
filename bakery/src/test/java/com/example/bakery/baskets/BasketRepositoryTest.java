@@ -26,25 +26,16 @@ class BasketRepositoryTest {
 
     @Test
     void findByUserIdAndStatus() {
-        User user1 = new User();
-        user1.setName("user1 name");
-        User user2 = new User();
-        user2.setName("user2 name");
-        User user3 = new User();
-        user3.setName("user3 name");
-        userRepository.saveAll(
-            ImmutableSet.of(user1, user2, user3));
+        // retrieve loaded user data
+        User user1 = userRepository.getById(1);
+        User user2 = userRepository.getById(2);
+        User user3 = userRepository.getById(3);
 
-        Product product1 = new Product();
-        product1.setName("blueberry cheesecake");
-        Product product2 = new Product();
-        product2.setName("strawberry jam");
-        Product product3 = new Product();
-        product3.setName("english muffin");
-        Product product4 = new Product();
-        product4.setName("cranberry scone");
-        productRepository.saveAll(
-            ImmutableSet.of(product1, product2, product3, product4));
+        // retrieve loaded product data
+        Product product1 = productRepository.getById(1);
+        Product product2 = productRepository.getById(2);
+        Product product3 = productRepository.getById(3);
+        Product product4 = productRepository.getById(4);
 
         Basket basket1 = new Basket();
         basket1.setUser(user1);
@@ -108,21 +99,14 @@ class BasketRepositoryTest {
 
     @Test
     void findByUserIdAndProductIdAndStatus() {
-        User user1 = new User();
-        user1.setName("user1 name");
-        User user2 = new User();
-        user2.setName("user2 name");
-        User user3 = new User();
-        user3.setName("user3 name");
-        userRepository.saveAll(
-            ImmutableSet.of(user1, user2, user3));
+        // retrieve loaded user data
+        User user1 = userRepository.getById(1);
+        User user2 = userRepository.getById(2);
+        User user3 = userRepository.getById(3);
 
-        Product product1 = new Product();
-        product1.setName("blueberry cheesecake");
-        Product product2 = new Product();
-        product2.setName("strawberry jam");
-        productRepository.saveAll(
-            ImmutableSet.of(product1, product2));
+        // retrieve loaded product data
+        Product product1 = productRepository.getById(1);
+        Product product2 = productRepository.getById(2);
 
         Basket basket1 = new Basket();
         basket1.setUser(user1);

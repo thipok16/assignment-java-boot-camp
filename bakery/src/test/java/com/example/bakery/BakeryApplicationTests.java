@@ -59,7 +59,7 @@ class BakeryApplicationTests {
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         List<Product> products = Arrays.asList(response.getBody());
 
-        Assertions.assertEquals(3, products.size());
+        Assertions.assertEquals(7, products.size());
     }
 
     @Test
