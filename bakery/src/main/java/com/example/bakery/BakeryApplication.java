@@ -112,19 +112,6 @@ public class BakeryApplication {
         userRepository.save(hermione);
     }
 
-    @PostConstruct
-    public void loadInitBaskets() {
-        User hermione = userRepository.getById(3);
-        Product muffin = productRepository.getById(6);
-
-        Basket basket = new Basket();
-        basket.setUser(hermione);
-        basket.setProduct(muffin);
-        basket.setAmount(4);
-        basket.setStatus(Basket.Status.BOUGHT);
-        basketRepository.save(basket);
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(BakeryApplication.class, args);
     }
