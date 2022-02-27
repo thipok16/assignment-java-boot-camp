@@ -41,7 +41,6 @@ Online Bakery
 The store's database is preloaded with
 - 3 users, whose ids are \[1, 2, 3\]
 - 7 products
-- 1 basket item
 
 # Assumptions
 Each user's browser knows the user's id and has it saved for later use.
@@ -255,30 +254,8 @@ after the user completes the checkout process with successful payment.
 Back to our example user, she browses all of her purchased items
 by calling the Bought Basket GET API.
 
-The returned value shows that she once bought 4 pieces of English muffin from the store.
+The returned value shows that she has never bought anything from this store.
 ```
 $ curl -s http://localhost:8080/baskets/bought?userId=3 | json_pp
-[
-   {
-      "amount" : 4,
-      "id" : 1,
-      "product" : {
-         "amountInStock" : 8,
-         "id" : 6,
-         "name" : "english muffin",
-         "priceDiscount" : 0,
-         "priceOriginal" : 100,
-         "ratingAverage" : 0,
-         "ratingCount" : 0,
-         "seller" : "pine street"
-      },
-      "status" : "BOUGHT",
-      "user" : {
-         "address" : "A dentist clinic",
-         "id" : 3,
-         "name" : "Hermione Granger",
-         "username" : "user3"
-      }
-   }
-]
+[]
 ```
